@@ -1,13 +1,14 @@
 package br.com.petz.cliente_pet.cliente.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Collate;
+import org.hibernate.annotations.CollectionId;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
@@ -19,6 +20,8 @@ import java.util.UUID;
 @Entity
 public class Cliente {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, unique = true, nullable = false)
     private UUID idCliente;
     @NotBlank
     private String nomeCompleto;
