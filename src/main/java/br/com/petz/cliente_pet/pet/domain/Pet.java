@@ -1,6 +1,9 @@
 package br.com.petz.cliente_pet.pet.domain;
 
+import br.com.petz.cliente_pet.pet.application.api.PetRequest;
+import br.com.petz.cliente_pet.pet.application.service.PetService;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -16,8 +19,11 @@ import java.util.UUID;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", columnDefinition = "uuid", updatable = false, unique = true, nullable = false)
+    @Column(name = "idPet", columnDefinition = "uuid", updatable = false, unique = true, nullable = false)
     private UUID idPet;
+    @NotNull
+    @Column(name = "idClienteTutor", columnDefinition = "uuid", nullable = false)
+    private UUID idClienteTutor;
     @NotBlank
     private String nomePet;
     @Enumerated(EnumType.STRING)
@@ -33,10 +39,28 @@ public class Pet {
     @NotNull
     private LocalDate dataNascimento;
     private String rga;
-    private Integer Peso;
+    private Integer peso;
 
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDoUltimaAlteracao;
+
+    public Pet(UUID idCliente, @Valid PetRequest petRequest){
+
+        this.idClienteTutor = idCliente;
+        this.nomePet = petRequest.getNomePet();
+        this.porte = petRequest.getPorte();
+        this.tipo = petRequest.getTipo();
+        this.microchip = petRequest.getMicrochip();
+        this.raca = petRequest.getRaca();
+        this.sexo = petRequest.getSexo();
+        this.pelagemCor = petRequest.getPelagemCor();
+        this.dataNascimento = petRequest.getDataNascimento();
+        this.rga = petRequest.getRga();
+        this.peso = petRequest.getPeso();
+        this.dataHoraDoCadastro = LocalDateTime.now();
+
+    }
+
 }
 
 
