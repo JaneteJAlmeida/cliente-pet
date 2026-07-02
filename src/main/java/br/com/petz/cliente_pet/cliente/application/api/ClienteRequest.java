@@ -1,6 +1,7 @@
 package br.com.petz.cliente_pet.cliente.application.api;
 
 import br.com.petz.cliente_pet.cliente.domain.Sexo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +24,7 @@ public class ClienteRequest {
     private String telefone;
     private Sexo sexo;
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
     @CPF
     private String cpf;

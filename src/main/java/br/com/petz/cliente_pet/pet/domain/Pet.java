@@ -1,7 +1,6 @@
 package br.com.petz.cliente_pet.pet.domain;
 
 import br.com.petz.cliente_pet.pet.application.api.PetRequest;
-import br.com.petz.cliente_pet.pet.application.service.PetService;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
