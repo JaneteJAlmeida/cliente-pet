@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -13,4 +14,8 @@ public interface PetAPI {
     @ResponseStatus(code = HttpStatus.CREATED)
     PetResponse postCliente(@PathVariable UUID idCliente,
                             @RequestBody @Valid PetRequest petRequest);
+
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    List<PetClienteListResponse> getPetsDoClienteComId(@PathVariable UUID idCliente);
 }
