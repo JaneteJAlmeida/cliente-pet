@@ -20,9 +20,7 @@ public class PetClienteListResponse {
         return petsDoCliente.stream()
                 .map(PetClienteListResponse::new)
                 .collect(Collectors.toList());
-
     }
-
     public PetClienteListResponse(Pet pet) {
         this.idPet = pet.getIdPet();
         this.nomePet = pet.getNomePet();
