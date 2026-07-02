@@ -1,6 +1,5 @@
 package br.com.petz.cliente_pet.pet.application.api;
 
-import br.com.petz.cliente_pet.cliente.application.api.ClienteDetalhadoResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,7 @@ public interface PetAPI {
 
     @PatchMapping(value = "/{idPet}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    PetResponse patchPet(@PathVariable UUID idCliente, @PathVariable UUID idPet,
+    void patchPet(@PathVariable UUID idCliente, @PathVariable UUID idPet,
                          @RequestBody @Valid PetAlteracaoRequest petAlteracaoRequest);
 
 }
