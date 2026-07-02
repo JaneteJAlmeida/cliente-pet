@@ -4,7 +4,6 @@ import br.com.petz.cliente_pet.pet.application.service.PetService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +12,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PetController implements PetAPI {
     private final PetService petService;
-
         @Override
     public PetResponse postCliente(UUID idCliente, PetRequest petRequest) {
         log.info("[inicia] PetController - postPet");
@@ -22,7 +20,6 @@ public class PetController implements PetAPI {
         log.info("[finaliza] PetController - postPet");
         return pet;
     }
-
     @Override
     public List<PetClienteListResponse> getPetsDoClienteComId(UUID idCliente) {
         log.info("[inicia] PetController - getPetsDoClienteComId");
@@ -31,7 +28,6 @@ public class PetController implements PetAPI {
         log.info("[finish] PetController - getPetsDoClienteComId");
         return petsDoCliente;
     }
-
     @Override
     public PetClienteDetalhadoResponse getPetDoClienteComId(UUID idCliente, UUID idPet) {
         log.info("[inicia] PetController - getPetDoClienteComId");
@@ -40,12 +36,18 @@ public class PetController implements PetAPI {
         log.info("[finish] PetController - getPetDoClienteComId");
         return pet;
     }
-
     @Override
     public void deletePetDoClienteComId(UUID idCliente, UUID idPet) {
         log.info("[inicia] PetController - deletePetDoClienteComId");
         log.info("idCliente] {} - [idPet] {}", idCliente, idPet);
         petService.deletaPetDoClienteComId(idCliente, idPet);
         log.info("[finaliza] PetController - deletePetDoClienteComId");
+    }
+    @Override
+    public PetResponse patchPet(UUID idCliente, UUID idPet, PetAlteracaoRequest petAlteracaoRequest) {log.info("[inicia] PetController - deletePetDoClienteComId");
+        log.info("[inicia] PetController - patchPet");
+        log.info("idCliente] {} - [idPet] {}", idCliente, idPet);
+        log.info("[finaliza] PetController - patchPet");
+        return null;
     }
 }
