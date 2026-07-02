@@ -1,6 +1,7 @@
 package br.com.petz.cliente_pet.pet.application.service;
 
 import br.com.petz.cliente_pet.cliente.application.service.ClienteService;
+import br.com.petz.cliente_pet.pet.application.api.PetClienteDetalhadoResponse;
 import br.com.petz.cliente_pet.pet.application.api.PetClienteListResponse;
 import br.com.petz.cliente_pet.pet.application.api.PetRequest;
 import br.com.petz.cliente_pet.pet.application.api.PetResponse;
@@ -36,6 +37,13 @@ public class PetApplicationService implements PetService {
         List<Pet> petsDoCliente = petRepository.buscaPetsDoClienteComId(idCliente);
         log.info("[finish] PetApplicationService - buscaPetsDoClienteComId");
         return PetClienteListResponse.converte(petsDoCliente);
+    }
+
+    @Override
+    public PetClienteDetalhadoResponse buscaPetDoClienteComId(UUID idCliente, UUID idPet) {
+        log.info("[start] PetApplicationService - buscaPetDoClienteComId");
+        log.info("[finish] PetApplicationService - buscaPetDoClienteComId");
+        return null;
     }
 
 }
